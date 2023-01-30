@@ -17,24 +17,24 @@ A NuxtJS plugin for injecting the Microsoft Clarity script tags into the head se
 ## Install
 ```sh
   # npm
-  $ npm i nuxtjs-microsoft-clarity --save
+  $ npm i nuxt-ms-clarity --save
 
   # yarn
-  $ yarn add nuxtjs-microsoft-clarity
+  $ yarn add nuxt-ms-clarity
 
 ```
 
 ## Getting Started
-Add `'nuxtjs-microsoft-clarity'` to the `modules` section of your `nuxt.config.js` file.
+Add `'nuxt-ms-clarity'` to the `modules` section of your `nuxt.config.js` file.
 
 ### Method 1: Inline configuration entry
 
-```js
+```ts
 {
   modules: [
-    'nuxtjs-microsoft-clarity', {
+    'nuxt-ms-clarity', {
       // Options
-    }
+    },
   ],
 }
 ```
@@ -45,7 +45,7 @@ Add `microsoftClarity` section in `nuxt.config.js` to set the module options:
 ```js
 {
   modules: [
-    'nuxtjs-microsoft-clarity'
+    'nuxt-ms-clarity',
   ],
   microsoftClarity: {
     // Options
@@ -55,7 +55,7 @@ Add `microsoftClarity` section in `nuxt.config.js` to set the module options:
 
 ### Method 3: Runtime Config
 
-```js
+```ts
 {
   modules: [
     'nuxtjs-microsoft-clarity'
