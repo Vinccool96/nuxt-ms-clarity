@@ -1,7 +1,11 @@
 import MsClarity from "../../../src/module"
 
 export default defineNuxtConfig({
-  modules: [MsClarity],
+  src: false,
+  modules: [
+    // @ts-ignore
+    MsClarity,
+  ],
 
   msClarity: {
     id: "test-id",

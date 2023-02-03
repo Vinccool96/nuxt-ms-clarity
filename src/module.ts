@@ -1,10 +1,9 @@
-import { defineNuxtModule, addPlugin, createResolver, isNuxt3 } from "@nuxt/kit"
-
-import { copyDeep } from "copy-deep"
+import { addPluginTemplate, createResolver, defineNuxtModule } from "@nuxt/kit"
+import { Nuxt } from "@nuxt/schema"
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
-  id: string | null
+  id: string
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -14,21 +13,16 @@ export default defineNuxtModule<ModuleOptions>({
   },
   // Default configuration options of the Nuxt module
   defaults: {
-    id: null,
+    id: "",
   },
-  setup(options, nuxt) {
-    const realOptions = copyDeep(options)
-    if (isNuxt3(nuxt)) {
-      // @ts-ignore
-      nuxt.options.runtimeConfig.public.msClarity = realOptions
-    } else {
-      // @ts-ignore
-      nuxt.options.publicRuntimeConfig.msClarity = realOptions
-    }
-
+  setup(options: ModuleOptions, nuxt: Nuxt) {
     const resolver = createResolver(import.meta.url)
 
     // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
-    addPlugin(resolver.resolve("./runtime/plugin.client"))
+    addPluginTemplate({
+      filename: "msClarity.client.ts",
+      src: resolver.resolve("./runtime/plugin.client.ts"),
+      options: { id: options.id },
+    })
   },
 })
