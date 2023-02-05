@@ -54,3 +54,6 @@ coverage
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# For test
+!test/fixtures/envFile/.env
